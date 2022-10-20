@@ -2,17 +2,36 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.mycompany.lojainformatica;
+package com.mycompany.model;
 
 /**
  *
  * @author gusta
  */
 public class Computador {
-    static String marca = "GustavoLeme";
-    String hd;
-    String processador;
+    
+    private int id;
+    private static String marca = "GustavoLeme";
+    private String hd;
+    private String processador;
+    
+    public Computador() {
+        
+    }
 
+    public Computador(String hd,String processador){
+        this.hd = hd;
+        this.processador = processador;
+    }
+    
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
     public static String getMarca() {
         return marca;
     }
@@ -36,11 +55,5 @@ public class Computador {
     public void setProcessador(String processador) {
         this.processador = processador;
     }
-
-    public Computador() {
-        
-    }
-    
-    
     
 }
