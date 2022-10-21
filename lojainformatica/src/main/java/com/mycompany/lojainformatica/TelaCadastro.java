@@ -23,14 +23,6 @@ public class TelaCadastro extends javax.swing.JFrame {
         initComponents();
     }
 
-    public TelaCadastro(Computador obj) {
-        this.objComputador = obj;
-        initComponents();
-
-        this.txtHD.setText(String.valueOf(objComputador.getHd()));
-        this.txtProc.setText(String.valueOf(objComputador.getProcessador()));
-    }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -44,7 +36,7 @@ public class TelaCadastro extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         txtHD = new javax.swing.JTextField();
-        txtProc = new javax.swing.JTextField();
+        txtProcessador = new javax.swing.JTextField();
         btnSalvar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -76,7 +68,7 @@ public class TelaCadastro extends javax.swing.JFrame {
                             .addComponent(jLabel2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtProc)
+                            .addComponent(txtProcessador)
                             .addComponent(txtHD, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(32, Short.MAX_VALUE))
         );
@@ -90,7 +82,7 @@ public class TelaCadastro extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(txtProc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtProcessador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(btnSalvar)
                 .addContainerGap(26, Short.MAX_VALUE))
@@ -112,16 +104,23 @@ public class TelaCadastro extends javax.swing.JFrame {
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         String hd = String.valueOf(txtHD.getText());
-        String processador = String.valueOf(txtProc.getText());
+        String processador = String.valueOf(txtProcessador.getText());
 
-        Computador objComputador = new Computador(hd, processador);
-        boolean retorno = ComputadorDAO.salvar(objComputador);
-
-        if (retorno) {
-            JOptionPane.showMessageDialog(this, "Cadastrado com sucesso!");
+        if (txtHD.getText().trim().equals("") || txtProcessador.getText().trim().equals("")) {
+            JOptionPane.showMessageDialog(this, "Preencha todos os campos!");
         } else {
-            JOptionPane.showMessageDialog(this, "Falha ao cadastrar!");
+            Computador objComputador = new Computador(hd, processador);
+            boolean retorno = ComputadorDAO.salvar(objComputador);
+
+            if (retorno) {
+                JOptionPane.showMessageDialog(this, "Cadastrado com sucesso!");
+                txtHD.setText("");
+                txtProcessador.setText("");
+            } else {
+                JOptionPane.showMessageDialog(this, "Falha ao cadastrar!");
+            }
         }
+
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     /**
@@ -166,6 +165,6 @@ public class TelaCadastro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField txtHD;
-    private javax.swing.JTextField txtProc;
+    private javax.swing.JTextField txtProcessador;
     // End of variables declaration//GEN-END:variables
 }

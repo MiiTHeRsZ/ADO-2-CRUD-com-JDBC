@@ -60,7 +60,7 @@
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="txtProc" max="32767" attributes="0"/>
+                              <Component id="txtProcessador" max="32767" attributes="0"/>
                               <Component id="txtHD" min="-2" pref="146" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -80,7 +80,7 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtProc" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtProcessador" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="btnSalvar" min="-2" max="-2" attributes="0"/>
@@ -102,7 +102,7 @@
         </Component>
         <Component class="javax.swing.JTextField" name="txtHD">
         </Component>
-        <Component class="javax.swing.JTextField" name="txtProc">
+        <Component class="javax.swing.JTextField" name="txtProcessador">
         </Component>
         <Component class="javax.swing.JButton" name="btnSalvar">
           <Properties>

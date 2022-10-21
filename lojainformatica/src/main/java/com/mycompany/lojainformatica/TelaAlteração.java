@@ -27,6 +27,8 @@ public class TelaAlteração extends javax.swing.JFrame {
         this.objComputador = obj;
         initComponents();
 
+        this.txtID.setText(String.valueOf(objComputador.getId()));
+        this.txtMarca.setText(String.valueOf(objComputador.getMarca()));
         this.txtHD.setText(String.valueOf(objComputador.getHd()));
         this.txtProc.setText(String.valueOf(objComputador.getProcessador()));
     }
@@ -147,9 +149,9 @@ public class TelaAlteração extends javax.swing.JFrame {
         boolean retorno = ComputadorDAO.alterar(objComputador);
 
         if (retorno) {
-            JOptionPane.showMessageDialog(this, "Cadastrado com sucesso!");
+            JOptionPane.showMessageDialog(this, "Alterado com sucesso!");
         } else {
-            JOptionPane.showMessageDialog(this, "Falha ao cadastrar!");
+            JOptionPane.showMessageDialog(this, "Falha ao alterar!");
         }
     }//GEN-LAST:event_btnSalvarActionPerformed
 
