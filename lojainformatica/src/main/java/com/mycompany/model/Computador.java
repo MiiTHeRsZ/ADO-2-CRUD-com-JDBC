@@ -9,21 +9,27 @@ package com.mycompany.model;
  * @author gusta
  */
 public class Computador {
-    
+
     private int id;
     private static String marca = "GustavoLeme";
     private String hd;
     private String processador;
-    
+
     public Computador() {
-        
+
     }
 
-    public Computador(String hd,String processador){
+    public Computador(String hd, String processador) {
         this.hd = hd;
         this.processador = processador;
     }
-    
+
+    public Computador(int id, String hd, String processador) {
+        this.id = id;
+        this.hd = hd;
+        this.processador = processador;
+    }
+
     public int getId() {
         return id;
     }
@@ -31,7 +37,7 @@ public class Computador {
     public void setId(int id) {
         this.id = id;
     }
-    
+
     public static String getMarca() {
         return marca;
     }
@@ -55,5 +61,5 @@ public class Computador {
     public void setProcessador(String processador) {
         this.processador = processador;
     }
-    
+
 }

@@ -95,7 +95,7 @@ public class ComputadorDAO {
         return lista;
     }
 
-    public static Computador consultar(int id) {
+    public static Computador buscarPorId(int id) {
 
         Connection connect = null;
         Computador obj = new Computador();
@@ -126,6 +126,40 @@ public class ComputadorDAO {
         }
 
         return obj;
+    }
+    
+    public static ArrayList<Computador> buscarPorProcessador(String processador) {
+
+        Connection connect = null;
+       ArrayList<Computador> lista = new ArrayList<Computador>();
+
+        try {
+            Class.forName(path);
+
+            connect = DriverManager.getConnection(url, url, pwd);
+
+            PreparedStatement cmdSQL = connect.prepareStatement("selec * from computador where precessador = ?;");
+            cmdSQL.setString(1, processador);
+
+            ResultSet rs = cmdSQL.executeQuery();
+
+            if (rs != null) {
+                while (rs.next()) {
+                    Computador objNew = new Computador();
+                    objNew.setId(rs.getInt("id"));
+                    objNew.setMarca(rs.getString("marca"));
+                    objNew.setHd(rs.getString("hd"));
+                    objNew.setProcessador(rs.getString("processador"));
+                }
+            }
+
+        } catch (ClassNotFoundException ex) {
+            System.out.println(ex.getMessage());
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        return lista;
     }
 
     public static boolean alterar(Computador obj) {
