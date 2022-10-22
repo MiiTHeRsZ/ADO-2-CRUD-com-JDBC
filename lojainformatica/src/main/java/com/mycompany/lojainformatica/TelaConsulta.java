@@ -103,12 +103,14 @@ public class TelaConsulta extends javax.swing.JFrame {
             }
         });
 
+        txtID.setEditable(false);
         txtID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtIDActionPerformed(evt);
             }
         });
 
+        txtProcessador.setEditable(false);
         txtProcessador.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtProcessadorActionPerformed(evt);
@@ -124,6 +126,11 @@ public class TelaConsulta extends javax.swing.JFrame {
 
         btnGrp.add(rdBtnId);
         rdBtnId.setText("ID:");
+        rdBtnId.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                rdBtnIdMouseClicked(evt);
+            }
+        });
         rdBtnId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rdBtnIdActionPerformed(evt);
@@ -132,6 +139,11 @@ public class TelaConsulta extends javax.swing.JFrame {
 
         btnGrp.add(rdBtnProcessador);
         rdBtnProcessador.setText("Processador:");
+        rdBtnProcessador.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                rdBtnProcessadorMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -151,7 +163,7 @@ public class TelaConsulta extends javax.swing.JFrame {
                         .addComponent(btnExcluir)))
                 .addContainerGap())
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(77, 77, 77)
+                .addGap(95, 95, 95)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(rdBtnId)
@@ -275,6 +287,14 @@ public class TelaConsulta extends javax.swing.JFrame {
     private void txtIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIDActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtIDActionPerformed
+
+    private void rdBtnIdMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rdBtnIdMouseClicked
+        txtID.setEditable(true);
+    }//GEN-LAST:event_rdBtnIdMouseClicked
+
+    private void rdBtnProcessadorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rdBtnProcessadorMouseClicked
+        txtProcessador.setEditable(true);
+    }//GEN-LAST:event_rdBtnProcessadorMouseClicked
 
     /**
      * @param args the command line arguments
