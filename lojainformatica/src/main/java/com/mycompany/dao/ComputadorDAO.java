@@ -103,9 +103,9 @@ public class ComputadorDAO {
         try {
             Class.forName(path);
 
-            connect = DriverManager.getConnection(url, url, pwd);
+            connect = DriverManager.getConnection(url, lgn, pwd);
 
-            PreparedStatement cmdSQL = connect.prepareStatement("selec * from computador where id = ?;");
+            PreparedStatement cmdSQL = connect.prepareStatement("SELECT * FROM computador WHERE id = ?;");
             cmdSQL.setInt(1, id);
 
             ResultSet rs = cmdSQL.executeQuery();
@@ -127,18 +127,18 @@ public class ComputadorDAO {
 
         return obj;
     }
-    
+
     public static ArrayList<Computador> buscarPorProcessador(String processador) {
 
         Connection connect = null;
-       ArrayList<Computador> lista = new ArrayList<Computador>();
+        ArrayList<Computador> lista = new ArrayList<Computador>();
 
         try {
             Class.forName(path);
 
-            connect = DriverManager.getConnection(url, url, pwd);
+            connect = DriverManager.getConnection(url, lgn, pwd);
 
-            PreparedStatement cmdSQL = connect.prepareStatement("selec * from computador where precessador = ?;");
+            PreparedStatement cmdSQL = connect.prepareStatement("SELECT * FROM computador WHERE processador = ?;");
             cmdSQL.setString(1, processador);
 
             ResultSet rs = cmdSQL.executeQuery();
@@ -150,6 +150,8 @@ public class ComputadorDAO {
                     objNew.setMarca(rs.getString("marca"));
                     objNew.setHd(rs.getString("hd"));
                     objNew.setProcessador(rs.getString("processador"));
+                    
+                    lista.add(objNew);
                 }
             }
 
@@ -169,7 +171,7 @@ public class ComputadorDAO {
         try {
             Class.forName(path);
 
-            connect = DriverManager.getConnection(url, url, pwd);
+            connect = DriverManager.getConnection(url, lgn, pwd);
 
             PreparedStatement cmdSQL = connect.prepareStatement("update computador set hd = ?, processador = ? where id = ?;");
 
@@ -197,7 +199,7 @@ public class ComputadorDAO {
         try {
             Class.forName(path);
 
-            connect = DriverManager.getConnection(url, url, pwd);
+            connect = DriverManager.getConnection(url, lgn, pwd);
 
             PreparedStatement cmdSQL = connect.prepareStatement("delete from computador where id = ?;");
 

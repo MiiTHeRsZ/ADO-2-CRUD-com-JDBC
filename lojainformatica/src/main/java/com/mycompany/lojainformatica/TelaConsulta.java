@@ -122,13 +122,13 @@ public class TelaConsulta extends javax.swing.JFrame {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(btnCadastrar))
+                            .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addGap(21, 21, 21)
                                 .addComponent(jLabel10)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(btnCadastrar)))
+                                .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel4Layout.createSequentialGroup()
@@ -185,20 +185,17 @@ public class TelaConsulta extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        if (txtID.getText() != null && txtProcessador.getText() == null) {
+        if (txtID.getText().length() > 0 && txtProcessador.getText().length() == 0) {
             int id = Integer.parseInt(txtID.getText());
 
-            if (txtID.getText().matches("[0-9]*")) {
-                Computador obj = ComputadorDAO.buscarPorId(id);
+            Computador obj = ComputadorDAO.buscarPorId(id);
 
-                DefaultTableModel modelo = (DefaultTableModel) tblComputadores.getModel();
+            DefaultTableModel modelo = (DefaultTableModel) tblComputadores.getModel();
 
-                modelo.addRow(new String[]{String.valueOf(obj.getId()), String.valueOf(obj.getMarca()), String.valueOf(obj.getHd()), String.valueOf(obj.getProcessador())});
-            } else {
-                JOptionPane.showMessageDialog(this, "Valor inválido");
-            }
-        } else if (txtID.getText() == null && txtProcessador.getText() != null) {
-            String processador = txtProcessador.getText();
+            modelo.addRow(new String[]{String.valueOf(obj.getId()), String.valueOf(obj.getMarca()), String.valueOf(obj.getHd()), String.valueOf(obj.getProcessador())});
+
+        } else if (txtID.getText().length() == 0 && txtProcessador.getText().length() > 0) {
+            String processador = String.valueOf(txtProcessador.getText());
             ArrayList<Computador> lista = ComputadorDAO.buscarPorProcessador(processador);
 
             DefaultTableModel modelo = (DefaultTableModel) tblComputadores.getModel();
@@ -226,9 +223,9 @@ public class TelaConsulta extends javax.swing.JFrame {
         int id = Integer.parseInt(tblComputadores.getValueAt(linhaSelecionada, 0).toString());
         String hd = String.valueOf(tblComputadores.getValueAt(linhaSelecionada, 2));
         String processador = String.valueOf(tblComputadores.getValueAt(linhaSelecionada, 3));
-        
+
         Computador obj = new Computador(id, hd, processador);
-        
+
         TelaAlteração newScreen = new TelaAlteração(obj);
         newScreen.setVisible(true);
     }//GEN-LAST:event_btnAlterarActionPerformed
@@ -237,9 +234,9 @@ public class TelaConsulta extends javax.swing.JFrame {
         int linhaSelecionada = tblComputadores.getSelectedRow();
         int id = Integer.parseInt(tblComputadores.getValueAt(linhaSelecionada, 0).toString());
         boolean retorno = ComputadorDAO.excluir(id);
-        if(retorno){
+        if (retorno) {
             JOptionPane.showMessageDialog(this, "Nota excluída com sucesso!");
-        }else{
+        } else {
             JOptionPane.showMessageDialog(this, "Falha ao excluir a nota!");
         }
     }//GEN-LAST:event_btnExcluirActionPerformed

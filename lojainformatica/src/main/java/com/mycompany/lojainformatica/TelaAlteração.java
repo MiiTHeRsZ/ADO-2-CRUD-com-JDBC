@@ -53,7 +53,7 @@ public class TelaAlteração extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         txtMarca = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "Alteração de Registro"));
 
